@@ -2,9 +2,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:paz="using:Avalonia.Controls.PanAndZoom"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Quisual.Controls.NodeEditor">
 
-	<Canvas Name="Canvas" Background="Black" Margin="20" />
+	<Panel>
+		<Panel Background="Transparent"
+			   x:CompileBindings="False">
+			<Panel Background="White" />
+			<Panel>
+				<Panel ClipToBounds="True">
+					<ScrollViewer Name="PageScrollViewer"
+								  HorizontalScrollBarVisibility="Disabled"
+								  VerticalScrollBarVisibility="Disabled">
+						<paz:ZoomBorder Name="PageZoomBorder"
+										Stretch="None"
+										ZoomSpeed="1.2"
+										PanButton="Middle"
+										EnablePan="True"
+										EnableZoom="True"
+										Background="Transparent"
+										ClipToBounds="False"
+										VerticalAlignment="Stretch"
+										HorizontalAlignment="Stretch">
+							<Panel VerticalAlignment="Center"
+								   HorizontalAlignment="Center"
+								   ClipToBounds="False">
+								<Panel Name="ContainerPanel"
+									   Background="Transparent"
+									   HorizontalAlignment="Center"
+									   VerticalAlignment="Center"
+									   ClipToBounds="False">
+									<Panel Height="300" Width="300">
+										<Rectangle Fill="Red" Height="100" VerticalAlignment="Top"/>
+										<Rectangle Fill="Blue" Opacity="0.5" Width="100" HorizontalAlignment="Right" />
+										<Rectangle Fill="Green" Opacity="0.5" Height="100" VerticalAlignment="Bottom"/>
+										<Rectangle Fill="Orange" Width="100" HorizontalAlignment="Left"/>
+									</Panel>
+								</Panel>
+							</Panel>
+						</paz:ZoomBorder>
+					</ScrollViewer>
+				</Panel>
+			</Panel>
+		</Panel>
+	</Panel>
 
 </UserControl>
